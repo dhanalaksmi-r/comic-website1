@@ -50,11 +50,11 @@ const LoginPage = () =>{
                     </div>
                     <div class="input-group mb-3">
                         <button class="btn btn-lg btn-light w-100 fs-6">
-                            <img src="" class="me-2"style={{width:'20px'}}/><small>Sign In with Google</small>
+                            <img src="google.png" class="me-2"style={{width:'20px'}}/><small>Sign In with Google</small>
                         </button>
                     </div>
-                    <div class="row">
-                        <small>Don't heve an account<a href="#">Sign Up</a></small>
+                    <div class="row ">
+                        <small>Don't have an account  <a href="#">Sign Up</a></small>
                     </div>
                 </div>
               </div>

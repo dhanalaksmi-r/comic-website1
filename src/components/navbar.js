@@ -18,7 +18,7 @@ const Navbar=() =>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item"><Link className="nav-link" to="/" style={{color:'#E4004B',fontSize:'20px'}}>Home</Link></li>
-              <li className="nav-item"><Link className="nav-link"   to="/" style={{color:'#E4004B',fontSize:'20px'}}>Create Comic</Link></li>
+              <li className="nav-item"><Link className="nav-link"   to="/creator" style={{color:'#E4004B',fontSize:'20px'}}>Create Comic</Link></li>
               <li className="nav-item"><Link className="nav-link"   to="/"style={{color:'#E4004B',fontSize:'20px'}}>Gallery</Link></li>
               <li className="nav-item"><Link className="nav-link"   to="/login" style={{color:'#E4004B',fontSize:'20px'}}>Login</Link></li>
             </ul>

@@ -32,7 +32,7 @@
 }
 .navbar-nav .nav-link {
   position: relative;
-  color: #E4004B;        /* Default text color */
+  color: #E4004B;        
   transition: color 0.3s;
 
 }
