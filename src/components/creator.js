@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './creator.css';
+import { toPng } from 'html-to-image';
 
 // to export as PNG, install: npm i html-to-image
 
@@ -119,16 +120,16 @@ export default function ComicCreatorPage() {
   async function exportPNG() {
     if (!boardRef.current) return;
     // Uncomment when html-to-image is installed
-    // try {
-    //   const dataUrl = await toPng(boardRef.current, { cacheBust: true });
-    //   const link = document.createElement('a');
-    //   link.download = 'comic.png';
-    //   link.href = dataUrl;
-    //   link.click();
-    // } catch (e) {
-    //   console.error(e);
-    // }
-    alert('To enable export, install html-to-image and uncomment code in exportPNG().');
+     try {
+       const dataUrl = await toPng(boardRef.current, { cacheBust: true });
+       const link = document.createElement('a');
+       link.download = 'comic.png';
+       link.href = dataUrl;
+      link.click();
+      } catch (e) {
+      console.error(e);
+     }
+    //alert('To enable export, install html-to-image and uncomment code in exportPNG().');
   }
 
   return (
@@ -279,7 +280,7 @@ export default function ComicCreatorPage() {
             </div>
 
             <div className="d-flex gap-2 mt-2">
-              <button className="btn btn-outline-secondary btn-sm" onClick={()=>localStorage.removeItem('comic_panels_v1')}>Export</button>
+              <button className="btn btn-outline-secondary btn-sm" onClick={exportPNG}>Export</button>
               <button className="btn btn-success btn-sm" onClick={()=>setShowPreview(true)}>Preview</button>
             </div>
           </div>
