@@ -1,8 +1,9 @@
 import React from "react";
 import './homepage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const navigate=useNavigate();
   return (
     <div>
      
@@ -11,8 +12,8 @@ const HomePage = () => {
         <div className="container">
           <h1 className="display-4">Unleash your inner hero-comic creation in no time!</h1>
           <p className="lead">Build, customize, and share your comic strips online.</p>
-          <a href="#" className="btn  btn-lg me-2" style={{backgroundColor:' #6A0066',color:'#E4004B'}}>Start Building</a>
-          <a href="#" className="btn  browsebtn btn-lg" style={{border:'1px solid #6A0066'}}>Browse Gallery</a>
+          <button className="btn  btn-lg me-2" style={{backgroundColor:' #6A0066',color:'#E4004B'}} onClick={()=>navigate("/creator")}>Start Building</button>
+          <button className="btn  browsebtn btn-lg" style={{border:'1px solid #6A0066'}}>Browse Gallery</button>
         </div>
       </section>
 
