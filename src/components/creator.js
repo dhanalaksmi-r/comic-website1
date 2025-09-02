@@ -48,8 +48,13 @@ export default function ComicCreatorPage() {
 
   function handleImageUpload(panelId, file) {
     if (!file) return;
-    const url = URL.createObjectURL(file);
-    setPanels(prev => prev.map(p => p.id === panelId ? { ...p, bg: url } : p));
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const base64Image=reader.result;
+    
+    setPanels(prev => prev.map(p => p.id === panelId ? { ...p, bg: base64Image } : p));
+    };
+    reader.readAsDataURL(file);
   }
 
   function addBubble(panelId, type = 'speech') {
@@ -121,7 +126,7 @@ export default function ComicCreatorPage() {
     if (!boardRef.current) return;
     // Uncomment when html-to-image is installed
      try {
-       const dataUrl = await toPng(boardRef.current, { cacheBust: true });
+       const dataUrl = await toPng(boardRef.current, { cacheBust: true ,useCORS:true});
        const link = document.createElement('a');
        link.download = 'comic.png';
        link.href = dataUrl;
@@ -280,7 +285,7 @@ export default function ComicCreatorPage() {
             </div>
 
             <div className="d-flex gap-2 mt-2">
-              <button className="btn btn-outline-secondary btn-sm" onClick={exportPNG}>Export</button>
+              {/*<button className="btn btn-outline-secondary btn-sm" onClick={exportPNG}>Export</button>*/}
               <button className="btn btn-success btn-sm" onClick={()=>setShowPreview(true)}>Preview</button>
             </div>
           </div>
