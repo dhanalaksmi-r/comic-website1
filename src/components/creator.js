@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './creator.css';
 import { toPng } from 'html-to-image';
 
-// to export as PNG, install: npm i html-to-image
+
 
 // import { toPng } from 'html-to-image';
 
@@ -30,8 +30,8 @@ export default function ComicCreatorPage() {
 
   const gridTemplate = useMemo(() => {
     switch (layout) {
-      case '1x3':
-        return { cols: 1, rows: 3, template: '1fr / 1fr' };
+      /*case '1x3':
+        return { cols: 1, rows: 3, template: '1fr / 1fr' };*/
       case '3x1':
         return { cols: 3, rows: 1, template: '1fr 1fr 1fr / 1fr' };
       case '1x1':
@@ -124,7 +124,7 @@ export default function ComicCreatorPage() {
 
   async function exportPNG() {
     if (!boardRef.current) return;
-    // Uncomment when html-to-image is installed
+    
      try {
        const dataUrl = await toPng(boardRef.current, { cacheBust: true ,useCORS:true});
        const link = document.createElement('a');
@@ -139,7 +139,7 @@ export default function ComicCreatorPage() {
 
   return (
     <div className="min-vh-100 d-flex flex-column bg-light">
-      {/* Inline helper styles specific to this page */}
+      
       <style>{`
         .board {
           border: 2px solid #222; border-radius: 10px; background:#fff;
@@ -190,7 +190,7 @@ export default function ComicCreatorPage() {
                 <h6 className="text-uppercase text-light">Layout</h6>
                 <div className="btn-group w-100 mb-3">
                   <button className={`btn btn-outline-secondary ${layout==='2x2'?'active':''}`} onClick={() => setLayout('2x2')}>2x2</button>
-                  <button className={`btn btn-outline-secondary ${layout==='1x3'?'active':''}`} onClick={() => setLayout('1x3')}>1x3</button>
+                  {/*<button className={`btn btn-outline-secondary ${layout==='1x3'?'active':''}`} onClick={() => setLayout('1x3')}>1x3</button>*/}
                   <button className={`btn btn-outline-secondary ${layout==='3x1'?'active':''}`} onClick={() => setLayout('3x1')}>3x1</button>
                   <button className={`btn btn-outline-secondary ${layout==='1x1'?'active':''}`} onClick={() => setLayout('1x1')}>1x1</button>
                 </div>
