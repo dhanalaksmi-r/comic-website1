@@ -3,12 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const GalleryPage = () => {
   const initialImages = [
-    { id: 1, src: "/images/comic.png", title: "", likes: 0, comments: [] },
+    { id: 1, src: "/images/comic.png", title: "", likes: 0, comments: [] ,showInput:false},
     //{ id: 2, src: "/images/img2.jpg", title: "Mountain View", likes: 0, comments: [] },
     //{ id: 3, src: "/images/img3.jpg", title: "City Lights", likes: 0, comments: [] },
   ];
 
   const [images, setImages] = useState(initialImages);
+  const [newComment,setNewComment]=useState({});
 
   //  Like
   const handleLike = (id) => {
@@ -18,19 +19,26 @@ const GalleryPage = () => {
       )
     );
   };
+  const toggleCommentBox = (id) => {
+    setImages((prev) =>
+      prev.map((img) =>
+        img.id === id ? { ...img, showInput: !img.showInput } : img
+      )
+    );
+  };
 
   //  Comment
   const handleComment = (id) => {
-    const comment = prompt("Enter your comment:");
-    if (comment) {
+    
+    if (!newComment[id]) return;
       setImages((prev) =>
         prev.map((img) =>
           img.id === id
-            ? { ...img, comments: [...img.comments, comment] }
+            ? { ...img, comments: [...img.comments, newComment[id]],showInput:false }
             : img
         )
       );
-    }
+     setNewComment({...newComment,[id]:""});
   };
 
   // Share
@@ -71,7 +79,7 @@ const GalleryPage = () => {
                 </button>
                 <button
                   className="btn btn-outline-secondary me-2"
-                  onClick={() => handleComment(img.id)}
+                  onClick={() => toggleCommentBox(img.id)}
                 >
                   💬 Comment
                 </button>
@@ -83,6 +91,26 @@ const GalleryPage = () => {
                 </button>
 
                 {/* Comments Section */}
+                {img.showInput && (
+                  <div className="mt-3">
+                    <input
+                      type="text"
+                      className="form-control mb-2"
+                      placeholder="Write a comment..."
+                      value={newComment[img.id] || ""}
+                      onChange={(e) =>
+                        setNewComment({ ...newComment, [img.id]: e.target.value })
+                      }
+                    />
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() => handleComment(img.id)}
+                    >
+                      Post Comment
+                    </button>
+                  </div>
+                )}
+
                 {img.comments.length > 0 && (
                   <div className="mt-3 text-start">
                     <strong>Comments:</strong>

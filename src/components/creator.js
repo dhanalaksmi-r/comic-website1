@@ -5,7 +5,7 @@ import { toPng } from 'html-to-image';
 
 
 
-// import { toPng } from 'html-to-image';
+
 
 export default function ComicCreatorPage() {
   const [layout, setLayout] = useState('2x2');
@@ -172,12 +172,9 @@ export default function ComicCreatorPage() {
       {/* TOP BAR */}
       <header className="bg-light text-dark">
         <div className="container py-3 d-flex align-items-center gap-2">
-          {/*<img src="/logo.png" alt="logo" style={{height:36}} />*/}
+         
           <h5 className="m-0" style={{justifyContent:"center",fontSize:'30px'}}>Create Your Own Comic</h5>
-          {/*<div className="ms-auto d-flex gap-2">
-            <button className="btn btn-outline-light btn-sm" onClick={() => setShowPreview(true)}>Preview</button>
-            <button className="btn btn-warning btn-sm" onClick={exportPNG}>Export PNG</button>
-          </div>*/}
+         
         </div>
       </header>
 
@@ -243,7 +240,7 @@ export default function ComicCreatorPage() {
                         className={`bubble ${b.type}`}
                         style={{ left: b.x, top: b.y, width: b.w, height: b.h }}
                          onMouseDown={(e) => {
-                         // Allow dragging only if user doesn't click inside text
+                         
                          if (e.target.getAttribute("contenteditable") !== "true") {
                                 onBubbleMouseDown(e, panel.id, b);
                          }
